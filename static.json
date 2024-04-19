@@ -8,55 +8,57 @@
     "version": "1.0.0",
     "attributes": {
       "metadata": {
-        "title": "Search | Globus",
-        "description": "This is an example of a basis Globus Search interface generated from a static.json file."
+        "title": "Search | Neurocartography@APS"
       },
       "content": {
-        "logo": {
-          "src": "https://www.usgs.gov/themes/custom/usgs_tantalum/usgs_logo.png",
-          "alt": "USGS – science for a changing world"
-        },
-        "headline": "ScienceBase Data Releases"
+        "headline": "Neurocartography"
       },
       "components": {
         "Result": {
-          "heading": "entries[0].content.title",
-          "summary": "entries[0].content.summary",
+          "summary": "entries[0].content.subtitle"
+        },
+        "ResultListing": {
+          "image": "entries[0].content.preview[0].link",
           "fields": [
             {
-              "label": "Purpose",
-              "property": "entries[0].content.purpose"
+              "label": "Creator",
+              "property": "entries[0].content.datacite.creators"
             },
             {
-              "label": "Material Request Instructions",
-              "property": "entries[0].content.materialRequestInstructions"
+              "label": "Acquisition Date",
+              "property": "entries[0].content.datacite.acquisition_date"
             },
             {
-              "label": "Tags",
-              "property": "entries[0].content.tags"
+              "label": "Experiment",
+              "property": "entries[0].content.beamline.experiment.value"
+            },
+            {
+              "label": "Center Position",
+              "property": "entries[0].content.beamline.center_pos.value"
+            },
+            {
+              "label": "Recon Type",
+              "property": "entries[0].content.beamline.recon_type.value"
             }
           ]
         }
       },
       "globus": {
+        "application": {
+          "client_id": "7b29cd62-7df9-4d21-9d9c-29b2768355a4"
+        },
         "search": {
-          "index": "6d222eba-980f-410c-9a58-52a785d660ea",
+          "index": "7dba248c-f41e-4bed-89f9-0043353da169",
           "facets": [
             {
-              "name": "Tags",
-              "field_name": "tags.name",
+              "name": "Creator",
+              "field_name": "datacite.creators.creator_name",
               "type": "terms",
               "size": 10
             },
             {
-              "name": "Categories",
-              "field_name": "browseCategories",
-              "type": "terms",
-              "size": 10
-            },
-            {
-              "name": "System Types",
-              "field_name": "systemTypes",
+              "name": "Recon Type",
+              "field_name": "beamline.recon_type.value",
               "type": "terms",
               "size": 10
             }
