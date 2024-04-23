@@ -14,16 +14,45 @@
       "content": {
         "headline": "Neurocartography"
       },
+      "features": {
+        "jsonata": true
+      },
       "components": {
         "Result": {
-          "summary": "entries[0].content.subtitle"
+          "heading": "'Sample ' & $split(subject, '_')[0]",
+          "links": [
+            {
+              "label": "Download via HTTPS",
+              "href": {
+                "property": "entries[0].content.beamline.https_url.value"
+              }
+            }
+          ],
+          "fields": [
+            {
+              "label": "Preview",
+              "property": "entries[0].content.center_preview[filename ~> /.png$/].link",
+              "type": "image"
+            },
+            {
+              "label": "Beamline Summary",
+              "property": "entries[0].content.beamline",
+              "type": "table"
+            },
+            {
+              "label": "DataCite",
+              "property": "entries[0].content.datacite",
+              "type": "table"
+            }
+          ]
         },
         "ResultListing": {
-          "image": "entries[0].content.preview[0].link",
+          "heading": "'Sample ' & $split(subject, '_')[0]",
+          "image": "entries[0].content.center_preview[filename ~> /.png$/].link",
           "fields": [
             {
               "label": "Creator",
-              "property": "entries[0].content.datacite.creators"
+              "property": "$join(entries[0].content.datacite.creators.creator_name, ', ')"
             },
             {
               "label": "Acquisition Date",
